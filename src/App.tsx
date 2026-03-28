@@ -393,7 +393,8 @@ export default function App() {
               </h5>
               <div className="space-y-2">
                 <a
-                  href="https://github.com/adityasharma0903/Backendify"
+                //github link will be added once repo is public
+                  href=""
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-300 transition-colors"
@@ -402,7 +403,8 @@ export default function App() {
                   GitHub Repository
                 </a>
                 <a
-                  href="https://www.npmjs.com/package/offbyte"
+                //link for npm package will be added once it's published
+                  href=""
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-300 transition-colors"

@@ -578,8 +578,496 @@ export const DOCS_CONTENT: DocSection[] = [
             ))}
           </div>
         </section>
+     </div>
+    )
+  },
+  {
+    id: 'getting-started',
+    title: 'Getting Started',
+    icon: <Rocket className="w-4 h-4" />,
+    items: [
+      { id: 'installation', title: 'Installation' },
+      { id: 'initialization', title: 'Initialization' },
+      { id: 'backend-generation', title: 'Backend Generation' }
+    ],
+    content: (
+      <div className="space-y-12">
+        <section className="space-y-4">
+          <h2 id="installation" className="text-2xl font-bold text-white">Installation</h2>
+          <p className="text-zinc-400 leading-relaxed">
+            Install Offbyte globally using npm to access the CLI from anywhere.
+          </p>
+          <CodeBlock>npm install -g offbyte</CodeBlock>
+          <div className="space-y-2">
+            <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest">Requirements</h4>
+            <ul className="list-disc list-inside text-sm text-zinc-500 space-y-1 ml-2">
+              <li>Node.js v18.0.0 or higher</li>
+              <li>npm v8.0.0 or higher</li>
+              <li>MongoDB (for default database generation)</li>
+            </ul>
+          </div>
+        </section>
+
+        <section className="space-y-4">
+          <h2 id="initialization" className="text-2xl font-bold text-white">Initialization</h2>
+          <p className="text-zinc-400">
+            Navigate to your frontend project root and run the initialization command.
+          </p>
+          <CodeBlock>offbyte init</CodeBlock>
+          <div className="p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800 space-y-4">
+            <h4 className="text-white font-semibold">What happens internally?</h4>
+            <StepList steps={[
+              'Project Scanning: Detects if you are using React, Vue, or Svelte.',
+              'Framework Detection: Identifies your build tools (Vite, Webpack).',
+              'Config Generation: Creates a offbyte.config.js file.',
+              'IR Initialization: Prepares the local Intermediate Representation store.',
+            ]} />
+          </div>
+        </section>
+
+        <section className="space-y-4">
+          <h2 id="backend-generation" className="text-2xl font-bold text-white">Backend Generation</h2>
+          <p className="text-zinc-400">
+            Once initialized, you can generate your backend with a single command.
+          </p>
+          <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800 font-mono text-sm text-zinc-300">
+            <div className="flex gap-2">
+              <span className="text-zinc-600">$</span>
+              <span>offbyte generate</span>
+            </div>
+            <div className="text-zinc-500 mt-4 space-y-1">
+              <p>🔍 Scanning frontend patterns...</p>
+              <p>📦 Building Intermediate Representation...</p>
+              <p>🚀 Generating Express server infrastructure...</p>
+              <p>✔ Created ./backend/src/index.ts</p>
+              <p>✔ Created ./backend/src/models/User.ts</p>
+              <p>✔ Created ./backend/src/routes/userRoutes.ts</p>
+              <p>📦 Installing backend dependencies...</p>
+              <p className="text-emerald-400 mt-2">✅ Backend generated successfully!</p>
+            </div>
+          </div>
+        </section>
       </div>
     )
   },
-  
+  {
+    id: 'core-concepts',
+    title: 'Core Concepts',
+    icon: <Layers className="w-4 h-4" />,
+    items: [
+      { id: 'resources', title: 'Resources' },
+      { id: 'ir', title: 'Intermediate Representation' },
+      { id: 'rule-engine', title: 'Rule Engine' }
+    ],
+    content: (
+      <div className="space-y-12">
+        <section className="space-y-4">
+          <h2 id="resources" className="text-2xl font-bold text-white">Resources</h2>
+          <p className="text-zinc-400">
+            A <strong className="text-white">Resource</strong> is a high-level entity detected in your frontend that requires backend persistence or logic. Examples include <code className="text-zinc-300">products</code>, <code className="text-zinc-300">users</code>, and <code className="text-zinc-300">orders</code>.
+          </p>
+          <div className="p-6 rounded-2xl bg-zinc-900 border border-zinc-800">
+            <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4">Detection Patterns</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-1">
+                <p className="text-emerald-400 text-xs font-mono">useState(['users'])</p>
+                <p className="text-xs text-zinc-500">State variables often imply a resource.</p>
+              </div>
+              <div className="space-y-1">
+                <p className="text-emerald-400 text-xs font-mono">fetch('/api/products')</p>
+                <p className="text-xs text-zinc-500">API calls directly define endpoints.</p>
+              </div>
+              <div className="space-y-1">
+                <p className="text-emerald-400 text-xs font-mono">items.map(item ={">"} ...)</p>
+                <p className="text-xs text-zinc-500">Mapping over arrays suggests collection resources.</p>
+              </div>
+              <div className="space-y-1">
+                <p className="text-emerald-400 text-xs font-mono">input name="email"</p>
+                <p className="text-xs text-zinc-500">Form inputs help define model schemas.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="space-y-4">
+          <h2 id="ir" className="text-2xl font-bold text-white">Intermediate Representation (IR)</h2>
+          <p className="text-zinc-400">
+            The IR is a JSON-based schema that acts as the source of truth for your backend. It decouples the detection logic from the code generation logic, allowing Offbyte to support multiple frameworks and databases.
+          </p>
+          <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800 font-mono text-xs text-zinc-400">
+            <p className="text-zinc-600">// Example IR Structure</p>
+            <pre>{`{
+  "resources": {
+    "User": {
+      "fields": { "name": "String", "email": "String" },
+      "endpoints": [
+        { "path": "/users", "method": "GET", "auth": true },
+        { "path": "/users", "method": "POST", "validation": "userSchema" }
+      ],
+      "relationships": { "orders": "hasMany" }
+    }
+  }
+}`}</pre>
+          </div>
+        </section>
+
+        <section className="space-y-4">
+          <h2 id="rule-engine" className="text-2xl font-bold text-white">Rule Engine</h2>
+          <p className="text-zinc-400">
+            The Rule Engine processes the IR and applies transformation rules to generate code. It handles:
+          </p>
+          <ul className="list-disc list-inside text-zinc-500 space-y-2 ml-4">
+            <li><strong className="text-zinc-300">Routing Rules:</strong> Converts IR endpoints into framework-specific router code.</li>
+            <li><strong className="text-zinc-300">Validation Rules:</strong> Generates Zod or Joi schemas based on field types.</li>
+            <li><strong className="text-zinc-300">Authentication Rules:</strong> Injects JWT or OAuth middleware where required.</li>
+          </ul>
+        </section>
+      </div>
+    )
+  },
+  {
+    id: 'cli-commands',
+    title: 'CLI Commands',
+    icon: <Terminal className="w-4 h-4" />,
+    items: [
+      { id: 'cmd-generate', title: 'offbyte generate' },
+      { id: 'cmd-connect', title: 'offbyte connect' },
+      { id: 'cmd-sync', title: 'offbyte sync' },
+      { id: 'cmd-benchmark', title: 'offbyte benchmark' },
+      { id: 'cmd-deploy', title: 'offbyte deploy' },
+      { id: 'cmd-generate-api', title: 'offbyte generate-api' },
+      { id: 'cmd-doctor', title: 'offbyte doctor' },
+    ],
+    content: (
+      <div className="space-y-16">
+        {CLI_COMMANDS_DATA.map((cmd) => (
+          <CommandSection
+            key={cmd.id}
+            id={cmd.id}
+            title={cmd.title}
+            description={cmd.description}
+            syntax={cmd.syntax}
+            examples={cmd.examples}
+            options={cmd.options}
+            internals={cmd.internals}
+            workflow={cmd.workflow}
+          />
+        ))}
+      </div>
+    )
+  },
+  {
+    id: 'architecture',
+    title: 'Architecture',
+    icon: <Layers className="w-4 h-4" />,
+    content: (
+      <div className="space-y-12">
+        <section className="space-y-4">
+          <p className="text-zinc-400">
+            Offbyte uses a sophisticated pipeline to transform frontend code into backend infrastructure. This process relies heavily on <strong className="text-white">Abstract Syntax Tree (AST)</strong> parsing to understand the intent of your code without executing it.
+          </p>
+        </section>
+
+        <div className="space-y-8">
+          {[
+            { step: 'Project Scanner', desc: 'Identifies project type (React/Vue/Svelte) and locates source directories.' },
+            { step: 'AST Parser', desc: 'Converts source files into ASTs using Babel and TypeScript parsers. This allows Offbyte to "read" your code structure.' },
+            { step: 'Detection Layer', desc: 'Traverses ASTs to find specific patterns like API calls, state hooks, and form structures.' },
+            { step: 'IR Builder', desc: 'Aggregates detected patterns into a unified JSON Intermediate Representation.' },
+            { step: 'Rule Engine', desc: 'Applies logic to the IR to decide which backend components are needed.' },
+            { step: 'Code Generator', desc: 'Uses EJS templates to output high-quality, framework-specific source code.' }
+          ].map((item, i) => (
+            <div key={i} className="flex gap-6 group">
+              <div className="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 font-bold group-hover:border-emerald-500/50 group-hover:text-emerald-400 transition-colors shrink-0">
+                {i + 1}
+              </div>
+              <div className="space-y-1">
+                <h4 className="text-white font-bold">{item.step}</h4>
+                <p className="text-sm text-zinc-500 leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <section className="p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/20">
+          <h4 className="text-emerald-400 font-bold mb-2 flex items-center gap-2">
+            <Info className="w-4 h-4" /> Why AST Parsing?
+          </h4>
+          <p className="text-sm text-zinc-400">
+            Unlike simple regex searches, AST parsing understands the context of your code. It knows the difference between a variable named <code className="text-zinc-300">user</code> and a resource entity <code className="text-zinc-300">User</code>, ensuring extremely high accuracy in backend generation.
+          </p>
+        </section>
+      </div>
+    )
+  },
+  {
+    id: 'troubleshooting',
+    title: 'Troubleshooting',
+    icon: <AlertTriangle className="w-4 h-4" />,
+    content: (
+      <div className="space-y-8">
+        <section className="space-y-4">
+          <p className="text-zinc-400">
+            If something doesn't work as expected while using <strong>Offbyte</strong>, this guide will help you identify and resolve common issues efficiently.
+          </p>
+          <p className="text-sm text-zinc-500">
+            <strong className="text-zinc-300">Most issues occur during one of these stages:</strong>
+          </p>
+          <ul className="text-sm text-zinc-500 space-y-1 list-disc list-inside ml-2">
+            <li>Project scanning</li>
+            <li>Resource detection</li>
+            <li>Backend generation</li>
+            <li>Backend startup</li>
+            <li>Deployment</li>
+          </ul>
+        </section>
+
+        {[
+          {
+            title: 'Resources or APIs Not Detected',
+            problem: 'Offbyte runs successfully but does not generate expected APIs or resources.',
+            example: 'Frontend contains a state variable like const [products, setProducts] = useState([]) but no /api/products route is generated.',
+            cause: 'Offbyte detects resources using static analysis of frontend patterns. Dynamic patterns, interpolated strings, or non-standard API calling conventions may not be reliably detected.',
+            causeBadPattern: 'const resource = "products"; fetch(`/api/${resource}`)',
+            solution: 'Use explicit, static resource patterns in your frontend code. This ensures Offbyte can reliably detect all required endpoints.',
+            solutionGoodPattern: 'fetch("/api/products") or const [products, setProducts] = useState([])',
+            fixCommand: 'offbyte scan && offbyte generate'
+          },
+          {
+            title: 'Backend Folder Not Generated',
+            problem: 'Running offbyte generate does not create the backend/ directory.',
+            cause: 'This typically occurs when: (1) Offbyte cannot detect a supported frontend project, (2) the command is run outside the project root, or (3) the project contains no detectable resources.',
+            solution: 'Ensure you are inside the frontend project directory with the correct project structure including src/components, src/pages, or src/hooks.',
+            fixCommand: 'cd my-frontend-project && offbyte scan'
+          },
+          {
+            title: 'Backend Server Not Starting',
+            problem: 'After generating backend, running npm run dev fails or the server crashes.',
+            cause: 'Dependencies may not have been installed properly, or there are missing environment configuration files.',
+            solution: 'Navigate to the backend directory and install all dependencies. Verify your .env file is properly configured with required variables.',
+            fixCommand: 'cd backend && npm install && npm run dev'
+          },
+          {
+            title: 'Database Connection Error',
+            problem: 'Backend server starts but database connection fails with authentication or connection timeout errors.',
+            cause: 'MongoDB or your specified database is not running, the connection URI is incorrect, or credentials are invalid.',
+            solution: 'Ensure your database instance is running and accessible. Update your .env file with the correct connection string. For local MongoDB, start the service. For MongoDB Atlas, verify credentials and IP whitelist.',
+            fixCommand: 'For local: mongod | For Atlas: Update MONGODB_URI=mongodb+srv://user:password@cluster.mongodb.net/db'
+          },
+          {
+            title: 'Sync Does Not Update Backend',
+            problem: 'Running offbyte sync does not update backend when frontend changes are made.',
+            cause: 'Offbyte only generates changes when it detects new resources or field modifications. Minor frontend changes that do not affect resource structure will not trigger updates.',
+            solution: 'Ensure your frontend changes include new resource usage patterns or field definitions. Run scan again to detect changes before syncing.',
+            fixCommand: 'offbyte scan && offbyte sync'
+          },
+          {
+            title: 'Deployment Fails',
+            problem: 'Running offbyte deploy fails during the deployment process to cloud platforms.',
+            cause: 'Deployment providers (Vercel, Railway, Netlify, etc.) require CLI authentication. Your credentials may have expired or are not configured.',
+            solution: 'Authenticate with your deployment provider\'s CLI before running Offbyte deployment. This establishes the required credentials and permissions.',
+            fixCommand: 'vercel login (or railway login, netlify login) && offbyte deploy --full'
+          },
+          {
+            title: 'Port Already In Use',
+            problem: 'Backend server fails to start with error: "Port 5000 already in use" or similar.',
+            cause: 'Another process is already using the port configured for your backend server.',
+            solution: 'Either terminate the existing process using the port or configure your backend to use a different port. Update your .env file to specify an alternative port.',
+            fixCommands: [
+              { os: 'macOS/Linux', cmd: 'lsof -i :5000' },
+              { os: 'macOS/Linux', cmd: 'kill -9 <PID>' },
+              { os: 'Windows', cmd: 'netstat -ano | findstr :5000' },
+              { os: 'Windows', cmd: 'taskkill /PID <PID> /F' },
+              { os: 'All Platforms', cmd: 'PORT=5001 npm run dev' }
+            ]
+          }
+        ].map((item: any, i: number) => (
+          <section key={i} className="space-y-4">
+            <div className="p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800 space-y-4">
+              <div className="flex items-center gap-2 text-red-400 mb-4">
+                <AlertTriangle className="w-5 h-5" />
+                <h3 className="text-lg font-bold">{item.title}</h3>
+              </div>
+
+              <div>
+                <p className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest mb-2">Problem</p>
+                <p className="text-sm text-zinc-400">{item.problem}</p>
+                {item.example && (
+                  <p className="text-xs text-zinc-500 mt-2 italic">Example: {item.example}</p>
+                )}
+              </div>
+
+              <div>
+                <p className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest mb-2">Root Cause</p>
+                <p className="text-sm text-zinc-400">{item.cause}</p>
+                {item.causeBadPattern && (
+                  <p className="text-xs text-red-400/70 mt-2 font-mono bg-zinc-950 px-2 py-1 rounded">❌ {item.causeBadPattern}</p>
+                )}
+              </div>
+
+              <div>
+                <p className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest mb-2">Solution</p>
+                <p className="text-sm text-zinc-400">{item.solution}</p>
+                {item.solutionGoodPattern && (
+                  <p className="text-xs text-emerald-400 mt-2 font-mono bg-zinc-950 px-2 py-1 rounded">✓ {item.solutionGoodPattern}</p>
+                )}
+              </div>
+
+              <div>
+                <p className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest mb-2">Resolution Command</p>
+                {item.fixCommands ? (
+                  <div className="space-y-2">
+                    {item.fixCommands.map((cmdItem: any, cmdIdx: number) => (
+                      <div key={cmdIdx} className="space-y-1">
+                        <p className="text-[10px] text-zinc-500 font-mono">{cmdItem.os}</p>
+                        <div className="flex items-center justify-between bg-black px-3 py-2 rounded group hover:bg-zinc-950 transition-colors relative">
+                          <code className="text-xs text-emerald-400 font-mono">{cmdItem.cmd}</code>
+                          <CopyButton command={cmdItem.cmd} />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-between bg-black px-3 py-2 rounded group hover:bg-zinc-950 transition-colors relative">
+                    <code className="text-xs text-emerald-400 font-mono">{item.fixCommand}</code>
+                    <CopyButton command={item.fixCommand} />
+                  </div>
+                )}
+              </div>
+            </div>
+          </section>
+        ))}
+      </div>
+    )
+  },
+  {
+    id: 'configuration',
+    title: 'Configuration',
+    icon: <Settings className="w-4 h-4" />,
+    content: (
+      <div className="space-y-8">
+        <section className="space-y-4">
+          <p className="text-zinc-400">
+            The <code className="text-zinc-300">offbyte.config.js</code> file allows you to fine-tune how your backend is generated.
+          </p>
+          <pre className="bg-zinc-950 p-4 rounded-xl border border-zinc-800 font-mono text-xs text-zinc-300">
+            {`module.exports = {
+  outputDir: './backend',
+  framework: 'express', // express, fastify, nest
+  database: 'mongodb', // mongodb, postgres, mysql, sqlite
+  auth: {
+    provider: 'jwt', // jwt, oauth, none
+    secret: process.env.JWT_SECRET
+  },
+  resources: {
+    // Manual overrides
+    'User': {
+      fields: { 'role': 'String' },
+      endpoints: ['GET', 'POST', 'DELETE']
+    }
+  }
+};`}
+          </pre>
+        </section>
+
+        <section className="space-y-6">
+          <h3 className="text-xl font-bold text-white">Property Reference</h3>
+          <div className="space-y-4">
+            {[
+              { prop: 'outputDir', desc: 'The directory where the backend code will be generated.' },
+              { prop: 'framework', desc: 'The Node.js framework to use for the server.' },
+              { prop: 'database', desc: 'The database system to generate models for.' },
+              { prop: 'auth', desc: 'Authentication configuration including provider and secrets.' },
+              { prop: 'resources', desc: 'Manual resource definitions that override automatic detection.' }
+            ].map((item, i) => (
+              <div key={i} className="flex gap-4">
+                <code className="text-emerald-400 text-xs shrink-0">{item.prop}</code>
+                <p className="text-xs text-zinc-500">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="space-y-4">
+          <h3 className="text-xl font-bold text-white">Environment Variables</h3>
+          <p className="text-sm text-zinc-500">
+            Offbyte respects standard environment variables for sensitive data.
+          </p>
+          <ul className="text-xs text-zinc-500 space-y-2 list-disc list-inside ml-2">
+            <li><code className="text-zinc-300">OFFBYTE_AI_KEY</code>: API key for AI-assisted mode.</li>
+            <li><code className="text-zinc-300">DATABASE_URL</code>: Connection string for your database.</li>
+            <li><code className="text-zinc-300">JWT_SECRET</code>: Secret key for signing tokens.</li>
+          </ul>
+        </section>
+      </div>
+    )
+  },
+  {
+    id: 'examples',
+    title: 'Examples',
+    icon: <Code2 className="w-4 h-4" />,
+    content: (
+      <div className="space-y-12">
+        <section className="space-y-4">
+          <h3 className="text-2xl font-bold text-white">React CRUD App</h3>
+          <p className="text-zinc-400">A simple task management application.</p>
+          <div className="p-6 rounded-2xl bg-zinc-900 border border-zinc-800 space-y-4">
+            <div>
+              <p className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest mb-2">Frontend Pattern</p>
+              <pre className="text-xs text-emerald-400">{`const [tasks, setTasks] = useState([]);
+fetch('/api/tasks', { method: 'POST', body: JSON.stringify(newTask) });`}</pre>
+            </div>
+            <div>
+              <p className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest mb-2">Generated Backend</p>
+              <p className="text-xs text-zinc-500">Creates <code className="text-zinc-300">Task</code> model, <code className="text-zinc-300">taskController</code>, and <code className="text-zinc-300">/api/tasks</code> routes with full CRUD support.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="space-y-4">
+          <h3 className="text-2xl font-bold text-white">Admin Dashboard</h3>
+          <p className="text-zinc-400">A complex dashboard for managing users and analytics.</p>
+          <div className="p-6 rounded-2xl bg-zinc-900 border border-zinc-800 space-y-4">
+            <ul className="text-sm text-zinc-500 space-y-2">
+              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-500" /> Automatic RBAC detection</li>
+              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-500" /> Complex relationship mapping</li>
+              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-500" /> Aggregation pipeline generation</li>
+            </ul>
+          </div>
+        </section>
+
+        <section className="space-y-4">
+          <h3 className="text-2xl font-bold text-white">Ecommerce App</h3>
+          <p className="text-zinc-400">A full-featured store with products, cart, and orders.</p>
+          <div className="p-6 rounded-2xl bg-zinc-900 border border-zinc-800 space-y-4">
+            <p className="text-sm text-zinc-500">Offbyte detects the <code className="text-zinc-300">Cart</code> context and generates session-based or database-backed cart logic automatically.</p>
+          </div>
+        </section>
+      </div>
+    )
+  },
+  {
+    id: 'faq',
+    title: 'FAQ',
+    icon: <HelpCircle className="w-4 h-4" />,
+    content: (
+      <div className="space-y-8">
+        {[
+          { q: 'Is Offbyte free?', a: 'Yes, the core CLI and offline mode are completely free and open-source.' },
+          { q: 'Which frameworks are supported?', a: 'Currently React, Vue, and Svelte are supported for frontend. Express, Fastify, and NestJS for backend.' },
+          { q: 'Can I customize generated code?', a: 'Absolutely. The generated code is standard Node.js code that you own and can modify as needed.' },
+          { q: 'Does it support databases?', a: 'Yes, it supports MongoDB, PostgreSQL, MySQL, and SQLite out of the box.' },
+          { q: 'Does it work offline?', a: 'Yes, the rule-based generation works entirely offline. AI mode requires an internet connection.' },
+          { q: 'Is the generated backend production ready?', a: 'Yes, it includes security middleware, logging, and follows scalable architecture patterns.' }
+        ].map((item, i) => (
+          <div key={i} className="space-y-2">
+            <h4 className="text-white font-bold flex gap-2">
+              <span className="text-emerald-400">Q:</span> {item.q}
+            </h4>
+            <p className="text-sm text-zinc-500 pl-6">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    )
+  }
 ];
