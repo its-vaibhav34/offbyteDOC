@@ -148,7 +148,7 @@ export default function App() {
                 <Settings className="w-5 h-5 text-black" />
               </div>
               <span className={cn("text-xl font-bold tracking-tight", isDarkMode ? "text-white" : "text-black")}>
-                Offbyte
+                offbyt
               </span>
             </div>
             {/* 
@@ -198,7 +198,7 @@ export default function App() {
                 {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
               <a
-                href="https://github.com"
+                href="https://github.com/vaibhav-katyal/offbyte"
                 target="_blank"
                 rel="noreferrer"
                 className={cn(
@@ -393,7 +393,7 @@ export default function App() {
               </h5>
               <div className="space-y-2">
                 <a
-                  href="https://github.com/adityasharma0903/Backendify"
+                  href="https://github.com/vaibhav-katyal/offbyte"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-300 transition-colors"
@@ -402,7 +402,7 @@ export default function App() {
                   GitHub Repository
                 </a>
                 <a
-                  href="https://www.npmjs.com/package/offbyte"
+                  href="https://www.npmjs.com/package/offbyt"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-300 transition-colors"
@@ -568,7 +568,7 @@ export default function App() {
                   <span className="flex items-center gap-1"><ChevronDown className="w-3 h-3" /> Select</span>
                   <span className="flex items-center gap-1"><ChevronRight className="w-3 h-3" /> Navigate</span>
                 </div>
-                <span>Search by Offbyte</span>
+                <span>Search by offbyt</span>
               </div>
             </motion.div>
           </div>
@@ -587,7 +587,7 @@ export default function App() {
                 <div className="w-6 h-6 rounded bg-emerald-500 flex items-center justify-center">
                   <Settings className="w-4 h-4 text-black" />
                 </div>
-                <span className="font-bold text-white">Offbyte</span>
+                <span className="font-bold text-white">offbyt</span>
               </div>
               <p className="text-sm text-zinc-500 max-w-xs">
                 Generating production-ready backend infrastructure from frontend projects automatically.
@@ -611,7 +611,7 @@ export default function App() {
             </div>
           </div>
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-zinc-800/50">
-            <p className="text-xs text-zinc-600">© 2026 Offbyte Inc. All rights reserved.</p>
+            <p className="text-xs text-zinc-600">© 2026 offbyt Inc. All rights reserved.</p>
             <div className="flex gap-6">
               <a href="#" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">Privacy Policy</a>
               <a href="#" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">Terms of Service</a>

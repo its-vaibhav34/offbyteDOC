@@ -242,19 +242,19 @@ export const CLI_COMMANDS_DATA: {
 }[] = [
     {
       id: 'cmd-generate',
-      title: 'offbyte generate',
+      title: 'offbyt generate',
       description: 'Generate a production-ready backend by scanning the frontend project and detecting resources automatically.',
       syntax: [
-        'offbyte generate',
-        'offbyte generate [path]',
-        'offbyte generate --quick',
-        'offbyte generate --no-auto-connect',
+        'offbyt generate',
+        'offbyt generate [path]',
+        'offbyt generate --quick',
+        'offbyt generate --no-auto-connect',
       ],
       examples: [
-        { desc: 'Generate backend using interactive setup:', cmd: 'offbyte generate' },
-        { desc: 'Generate backend using default configuration:', cmd: 'offbyte generate --quick' },
-        { desc: 'Generate backend from a specific project directory:', cmd: 'offbyte generate ./frontend-project' },
-        { desc: 'Skip automatic frontend-backend connection:', cmd: 'offbyte generate --no-auto-connect' },
+        { desc: 'Generate backend using interactive setup:', cmd: 'offbyt generate' },
+        { desc: 'Generate backend using default configuration:', cmd: 'offbyt generate --quick' },
+        { desc: 'Generate backend from a specific project directory:', cmd: 'offbyt generate ./frontend-project' },
+        { desc: 'Skip automatic frontend-backend connection:', cmd: 'offbyt generate --no-auto-connect' },
       ],
       options: [
         { flag: '--quick', description: 'Use default configuration without interactive prompts' },
@@ -271,20 +271,20 @@ export const CLI_COMMANDS_DATA: {
       ],
       workflow: {
         desc: 'Most developers start a project using:',
-        commands: ['offbyte generate --quick'],
+        commands: ['offbyt generate --quick'],
       },
     },
     {
       id: 'cmd-connect',
-      title: 'offbyte connect',
+      title: 'offbyt connect',
       description: 'Automatically connects your frontend application to the generated backend.',
       syntax: [
-        'offbyte connect',
-        'offbyte connect [path]',
+        'offbyt connect',
+        'offbyt connect [path]',
       ],
       examples: [
-        { desc: 'Connect frontend and backend automatically:', cmd: 'offbyte connect' },
-        { desc: 'Connect a specific frontend project:', cmd: 'offbyte connect ./frontend-project' },
+        { desc: 'Connect frontend and backend automatically:', cmd: 'offbyt connect' },
+        { desc: 'Connect a specific frontend project:', cmd: 'offbyt connect ./frontend-project' },
       ],
       internals: [
         'Scans frontend files for API calls',
@@ -296,20 +296,20 @@ export const CLI_COMMANDS_DATA: {
       ],
       workflow: {
         desc: 'After generating backend:',
-        commands: ['offbyte generate', 'offbyte connect'],
+        commands: ['offbyt generate', 'offbyt connect'],
       },
     },
     {
       id: 'cmd-sync',
-      title: 'offbyte sync',
+      title: 'offbyt sync',
       description: 'Synchronizes backend infrastructure with changes made in the frontend project.',
       syntax: [
-        'offbyte sync',
-        'offbyte sync [path]',
+        'offbyt sync',
+        'offbyt sync [path]',
       ],
       examples: [
-        { desc: 'Update backend based on frontend changes:', cmd: 'offbyte sync' },
-        { desc: 'Sync a specific project directory:', cmd: 'offbyte sync ./frontend-project' },
+        { desc: 'Update backend based on frontend changes:', cmd: 'offbyt sync' },
+        { desc: 'Sync a specific project directory:', cmd: 'offbyt sync ./frontend-project' },
       ],
       internals: [
         'The CLI scans the frontend project again',
@@ -321,24 +321,24 @@ export const CLI_COMMANDS_DATA: {
       ],
       workflow: {
         desc: 'After modifying frontend state or resources:',
-        commands: ['offbyte sync'],
+        commands: ['offbyt sync'],
       },
     },
     {
       id: 'cmd-benchmark',
-      title: 'offbyte benchmark',
+      title: 'offbyt benchmark',
       description: 'Runs performance and scalability tests on your backend server.',
       syntax: [
-        'offbyte benchmark',
-        'offbyte benchmark --levels 10,100,1000',
-        'offbyte benchmark --duration 20',
-        'offbyte benchmark --startup-mode',
+        'offbyt benchmark',
+        'offbyt benchmark --levels 10,100,1000',
+        'offbyt benchmark --duration 20',
+        'offbyt benchmark --startup-mode',
       ],
       examples: [
-        { desc: 'Run default scalability test:', cmd: 'offbyte benchmark' },
-        { desc: 'Run benchmark with custom load levels:', cmd: 'offbyte benchmark --levels 100,1000,10000' },
-        { desc: 'Run benchmark with longer duration:', cmd: 'offbyte benchmark --duration 30' },
-        { desc: 'Simulate startup growth scenario:', cmd: 'offbyte benchmark --startup-mode' },
+        { desc: 'Run default scalability test:', cmd: 'offbyt benchmark' },
+        { desc: 'Run benchmark with custom load levels:', cmd: 'offbyt benchmark --levels 100,1000,10000' },
+        { desc: 'Run benchmark with longer duration:', cmd: 'offbyt benchmark --duration 30' },
+        { desc: 'Simulate startup growth scenario:', cmd: 'offbyt benchmark --startup-mode' },
       ],
       options: [
         { flag: '--levels', description: 'Define concurrent user load levels' },
@@ -354,23 +354,23 @@ export const CLI_COMMANDS_DATA: {
       ],
       workflow: {
         desc: 'Before deploying an application:',
-        commands: ['offbyte benchmark --levels 100,1000,10000'],
+        commands: ['offbyt benchmark --levels 100,1000,10000'],
       },
     },
     {
       id: 'cmd-deploy',
-      title: 'offbyte deploy',
+      title: 'offbyt deploy',
       description: 'Deploys your frontend and backend infrastructure to supported cloud providers.',
       syntax: [
-        'offbyte deploy',
-        'offbyte deploy --full',
-        'offbyte deploy --frontend vercel --backend railway',
-        'offbyte deploy --frontend netlify --backend skip',
+        'offbyt deploy',
+        'offbyt deploy --full',
+        'offbyt deploy --frontend vercel --backend railway',
+        'offbyt deploy --frontend netlify --backend skip',
       ],
       examples: [
-        { desc: 'Deploy full stack using default providers:', cmd: 'offbyte deploy --full' },
-        { desc: 'Deploy frontend and backend separately:', cmd: 'offbyte deploy --frontend vercel --backend railway' },
-        { desc: 'Deploy only frontend:', cmd: 'offbyte deploy --frontend netlify --backend skip' },
+        { desc: 'Deploy full stack using default providers:', cmd: 'offbyt deploy --full' },
+        { desc: 'Deploy frontend and backend separately:', cmd: 'offbyt deploy --frontend vercel --backend railway' },
+        { desc: 'Deploy only frontend:', cmd: 'offbyt deploy --frontend netlify --backend skip' },
       ],
       options: [
         { flag: '--full', description: 'Deploy using default stack (Vercel + Railway)' },
@@ -388,22 +388,22 @@ export const CLI_COMMANDS_DATA: {
       ],
       workflow: {
         desc: 'Deploy full stack application:',
-        commands: ['offbyte deploy --full'],
+        commands: ['offbyt deploy --full'],
       },
     },
     {
       id: 'cmd-generate-api',
-      title: 'offbyte generate-api',
+      title: 'offbyt generate-api',
       description: 'Generates backend APIs based on frontend state structures.',
       syntax: [
-        'offbyte generate-api',
-        'offbyte generate-api [path]',
-        'offbyte generate-api --no-inject',
+        'offbyt generate-api',
+        'offbyt generate-api [path]',
+        'offbyt generate-api --no-inject',
       ],
       examples: [
-        { desc: 'Generate APIs from frontend state:', cmd: 'offbyte generate-api' },
-        { desc: 'Generate APIs from a specific project:', cmd: 'offbyte generate-api ./frontend-project' },
-        { desc: 'Generate APIs without modifying frontend code:', cmd: 'offbyte generate-api --no-inject' },
+        { desc: 'Generate APIs from frontend state:', cmd: 'offbyt generate-api' },
+        { desc: 'Generate APIs from a specific project:', cmd: 'offbyt generate-api ./frontend-project' },
+        { desc: 'Generate APIs without modifying frontend code:', cmd: 'offbyt generate-api --no-inject' },
       ],
       options: [
         { flag: '--no-inject', description: 'Skip automatic API integration in frontend files' },
@@ -418,21 +418,21 @@ export const CLI_COMMANDS_DATA: {
       ],
       workflow: {
         desc: 'Generate APIs after building UI:',
-        commands: ['offbyte generate-api'],
+        commands: ['offbyt generate-api'],
       },
     },
     {
       id: 'cmd-doctor',
-      title: 'offbyte doctor',
-      description: 'Checks whether your system environment is ready to run Offbyte.',
+      title: 'offbyt doctor',
+      description: 'Checks whether your system environment is ready to run offbyt.',
       syntax: [
-        'offbyte doctor',
-        'offbyte doctor -ai',
+        'offbyt doctor',
+        'offbyt doctor -ai',
       ],
       examples: [
-        { desc: 'Run environment diagnostics:', cmd: 'offbyte doctor' },
-        { desc: 'Run diagnostics with AI-powered error analysis:', cmd: 'offbyte doctor -ai' },
-        // { desc: 'Automatically run dev server and analyze errors:', cmd: 'offbyte doctor -ai' },
+        { desc: 'Run environment diagnostics:', cmd: 'offbyt doctor' },
+        { desc: 'Run diagnostics with AI-powered error analysis:', cmd: 'offbyt doctor -ai' },
+        // { desc: 'Automatically run dev server and analyze errors:', cmd: 'offbyt doctor -ai' },
       ],
       options: [
         { flag: '-ai', description: 'Automatically runs npm run dev, detects errors, and provides AI-powered step-by-step solutions using Llama model in a markdown report' },
@@ -452,7 +452,7 @@ export const CLI_COMMANDS_DATA: {
       ],
       workflow: {
         desc: 'Before generating backend:',
-        commands: ['offbyte doctor', 'offbyte doctor -ai'],
+        commands: ['offbyt doctor', 'offbyt doctor -ai'],
       },
     },
   ];
@@ -473,7 +473,7 @@ export const DOCS_CONTENT: DocSection[] = [
       <div className="space-y-8" id="overview">
         <section className="space-y-4">
           <p className="text-lg text-zinc-400 leading-relaxed">
-            <strong className="text-white">Offbyte</strong> is a revolutionary CLI tool that automatically generates production-ready backend infrastructure from your frontend code. By analyzing your frontend's API usage patterns, state variables, and data structures, Offbyte builds a complete, scalable backend in seconds.
+            <strong className="text-white">offbyt</strong> is a revolutionary CLI tool that automatically generates production-ready backend infrastructure from your frontend code. By analyzing your frontend's API usage patterns, state variables, and data structures, offbyt builds a complete, scalable backend in seconds.
           </p>
         </section>
 
@@ -483,12 +483,12 @@ export const DOCS_CONTENT: DocSection[] = [
             Frontend-first development is the modern standard, yet building a matching backend remains a bottleneck. Developers often spend days writing repetitive boilerplate for routes, controllers, models, and authentication. This "infrastructure tax" slows down innovation and introduces human error in API contracts.
           </p>
           <p className="text-zinc-400">
-            Offbyte exists to remove this friction. It automates the "boring" parts of backend development, allowing you to focus on building features while ensuring your infrastructure is production-ready from day one.
+            offbyt exists to remove this friction. It automates the "boring" parts of backend development, allowing you to focus on building features while ensuring your infrastructure is production-ready from day one.
           </p>
         </section>
 
         <section className="space-y-4">
-          <h2 id="why-offbyte" className="text-2xl font-bold text-white">Why Developers Use Offbyte</h2>
+          <h2 id="why-offbyt" className="text-2xl font-bold text-white">Why Developers Use offbyt</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-6 rounded-2xl bg-zinc-900 border border-zinc-800">
               <h3 className="text-emerald-400 font-semibold mb-2 flex items-center gap-2">
@@ -512,7 +512,7 @@ export const DOCS_CONTENT: DocSection[] = [
               <h3 className="text-emerald-400 font-semibold mb-2 flex items-center gap-2">
                 <Code2 className="w-4 h-4" /> Frontend-First Workflow
               </h3>
-              <p className="text-sm text-zinc-500">Build your UI first, and let Offbyte infer the necessary backend structure.</p>
+              <p className="text-sm text-zinc-500">Build your UI first, and let offbyt infer the necessary backend structure.</p>
             </div>
           </div>
         </section>
@@ -536,7 +536,7 @@ export const DOCS_CONTENT: DocSection[] = [
                     <Settings className="w-6 h-6 text-black" />
                   </div>
                 </div>
-                <p className="font-bold text-emerald-400">Offbyte</p>
+                <p className="font-bold text-emerald-400">offbyt</p>
                 <p className="text-[10px] text-zinc-500">Scanning Patterns</p>
               </div>
               <ChevronRight className="w-8 h-8 text-zinc-700 hidden md:block" />
@@ -595,9 +595,9 @@ export const DOCS_CONTENT: DocSection[] = [
         <section className="space-y-4">
           <h2 id="installation" className="text-2xl font-bold text-white">Installation</h2>
           <p className="text-zinc-400 leading-relaxed">
-            Install Offbyte globally using npm to access the CLI from anywhere.
+            Install offbyt globally using npm to access the CLI from anywhere.
           </p>
-          <CodeBlock>npm install -g offbyte</CodeBlock>
+          <CodeBlock>npm install -g offbyt</CodeBlock>
           <div className="space-y-2">
             <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-widest">Requirements</h4>
             <ul className="list-disc list-inside text-sm text-zinc-500 space-y-1 ml-2">
@@ -613,13 +613,13 @@ export const DOCS_CONTENT: DocSection[] = [
           <p className="text-zinc-400">
             Navigate to your frontend project root and run the initialization command.
           </p>
-          <CodeBlock>offbyte init</CodeBlock>
+          <CodeBlock>offbyt init</CodeBlock>
           <div className="p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800 space-y-4">
             <h4 className="text-white font-semibold">What happens internally?</h4>
             <StepList steps={[
               'Project Scanning: Detects if you are using React, Vue, or Svelte.',
               'Framework Detection: Identifies your build tools (Vite, Webpack).',
-              'Config Generation: Creates a offbyte.config.js file.',
+              'Config Generation: Creates a offbyt.config.js file.',
               'IR Initialization: Prepares the local Intermediate Representation store.',
             ]} />
           </div>
@@ -633,7 +633,7 @@ export const DOCS_CONTENT: DocSection[] = [
           <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800 font-mono text-sm text-zinc-300">
             <div className="flex gap-2">
               <span className="text-zinc-600">$</span>
-              <span>offbyte generate</span>
+              <span>offbyt generate</span>
             </div>
             <div className="text-zinc-500 mt-4 space-y-1">
               <p>🔍 Scanning frontend patterns...</p>
@@ -692,7 +692,7 @@ export const DOCS_CONTENT: DocSection[] = [
         <section className="space-y-4">
           <h2 id="ir" className="text-2xl font-bold text-white">Intermediate Representation (IR)</h2>
           <p className="text-zinc-400">
-            The IR is a JSON-based schema that acts as the source of truth for your backend. It decouples the detection logic from the code generation logic, allowing Offbyte to support multiple frameworks and databases.
+            The IR is a JSON-based schema that acts as the source of truth for your backend. It decouples the detection logic from the code generation logic, allowing offbyt to support multiple frameworks and databases.
           </p>
           <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800 font-mono text-xs text-zinc-400">
             <p className="text-zinc-600">// Example IR Structure</p>
@@ -730,13 +730,13 @@ export const DOCS_CONTENT: DocSection[] = [
     title: 'CLI Commands',
     icon: <Terminal className="w-4 h-4" />,
     items: [
-      { id: 'cmd-generate', title: 'offbyte generate' },
-      { id: 'cmd-connect', title: 'offbyte connect' },
-      { id: 'cmd-sync', title: 'offbyte sync' },
-      { id: 'cmd-benchmark', title: 'offbyte benchmark' },
-      { id: 'cmd-deploy', title: 'offbyte deploy' },
-      { id: 'cmd-generate-api', title: 'offbyte generate-api' },
-      { id: 'cmd-doctor', title: 'offbyte doctor' },
+      { id: 'cmd-generate', title: 'offbyt generate' },
+      { id: 'cmd-connect', title: 'offbyt connect' },
+      { id: 'cmd-sync', title: 'offbyt sync' },
+      { id: 'cmd-benchmark', title: 'offbyt benchmark' },
+      { id: 'cmd-deploy', title: 'offbyt deploy' },
+      { id: 'cmd-generate-api', title: 'offbyt generate-api' },
+      { id: 'cmd-doctor', title: 'offbyt doctor' },
     ],
     content: (
       <div className="space-y-16">
@@ -764,14 +764,14 @@ export const DOCS_CONTENT: DocSection[] = [
       <div className="space-y-12">
         <section className="space-y-4">
           <p className="text-zinc-400">
-            Offbyte uses a sophisticated pipeline to transform frontend code into backend infrastructure. This process relies heavily on <strong className="text-white">Abstract Syntax Tree (AST)</strong> parsing to understand the intent of your code without executing it.
+            offbyt uses a sophisticated pipeline to transform frontend code into backend infrastructure. This process relies heavily on <strong className="text-white">Abstract Syntax Tree (AST)</strong> parsing to understand the intent of your code without executing it.
           </p>
         </section>
 
         <div className="space-y-8">
           {[
             { step: 'Project Scanner', desc: 'Identifies project type (React/Vue/Svelte) and locates source directories.' },
-            { step: 'AST Parser', desc: 'Converts source files into ASTs using Babel and TypeScript parsers. This allows Offbyte to "read" your code structure.' },
+            { step: 'AST Parser', desc: 'Converts source files into ASTs using Babel and TypeScript parsers. This allows offbyt to "read" your code structure.' },
             { step: 'Detection Layer', desc: 'Traverses ASTs to find specific patterns like API calls, state hooks, and form structures.' },
             { step: 'IR Builder', desc: 'Aggregates detected patterns into a unified JSON Intermediate Representation.' },
             { step: 'Rule Engine', desc: 'Applies logic to the IR to decide which backend components are needed.' },
@@ -808,7 +808,7 @@ export const DOCS_CONTENT: DocSection[] = [
       <div className="space-y-8">
         <section className="space-y-4">
           <p className="text-zinc-400">
-            If something doesn't work as expected while using <strong>Offbyte</strong>, this guide will help you identify and resolve common issues efficiently.
+            If something doesn't work as expected while using <strong>offbyt</strong>, this guide will help you identify and resolve common issues efficiently.
           </p>
           <p className="text-sm text-zinc-500">
             <strong className="text-zinc-300">Most issues occur during one of these stages:</strong>
@@ -825,20 +825,20 @@ export const DOCS_CONTENT: DocSection[] = [
         {[
           {
             title: 'Resources or APIs Not Detected',
-            problem: 'Offbyte runs successfully but does not generate expected APIs or resources.',
+            problem: 'offbyt runs successfully but does not generate expected APIs or resources.',
             example: 'Frontend contains a state variable like const [products, setProducts] = useState([]) but no /api/products route is generated.',
-            cause: 'Offbyte detects resources using static analysis of frontend patterns. Dynamic patterns, interpolated strings, or non-standard API calling conventions may not be reliably detected.',
+            cause: 'offbyt detects resources using static analysis of frontend patterns. Dynamic patterns, interpolated strings, or non-standard API calling conventions may not be reliably detected.',
             causeBadPattern: 'const resource = "products"; fetch(`/api/${resource}`)',
-            solution: 'Use explicit, static resource patterns in your frontend code. This ensures Offbyte can reliably detect all required endpoints.',
+            solution: 'Use explicit, static resource patterns in your frontend code. This ensures offbyt can reliably detect all required endpoints.',
             solutionGoodPattern: 'fetch("/api/products") or const [products, setProducts] = useState([])',
-            fixCommand: 'offbyte scan && offbyte generate'
+            fixCommand: 'offbyt scan && offbyt generate'
           },
           {
             title: 'Backend Folder Not Generated',
-            problem: 'Running offbyte generate does not create the backend/ directory.',
-            cause: 'This typically occurs when: (1) Offbyte cannot detect a supported frontend project, (2) the command is run outside the project root, or (3) the project contains no detectable resources.',
+            problem: 'Running offbyt generate does not create the backend/ directory.',
+            cause: 'This typically occurs when: (1) offbyt cannot detect a supported frontend project, (2) the command is run outside the project root, or (3) the project contains no detectable resources.',
             solution: 'Ensure you are inside the frontend project directory with the correct project structure including src/components, src/pages, or src/hooks.',
-            fixCommand: 'cd my-frontend-project && offbyte scan'
+            fixCommand: 'cd my-frontend-project && offbyt scan'
           },
           {
             title: 'Backend Server Not Starting',
@@ -856,17 +856,17 @@ export const DOCS_CONTENT: DocSection[] = [
           },
           {
             title: 'Sync Does Not Update Backend',
-            problem: 'Running offbyte sync does not update backend when frontend changes are made.',
-            cause: 'Offbyte only generates changes when it detects new resources or field modifications. Minor frontend changes that do not affect resource structure will not trigger updates.',
+            problem: 'Running offbyt sync does not update backend when frontend changes are made.',
+            cause: 'offbyt only generates changes when it detects new resources or field modifications. Minor frontend changes that do not affect resource structure will not trigger updates.',
             solution: 'Ensure your frontend changes include new resource usage patterns or field definitions. Run scan again to detect changes before syncing.',
-            fixCommand: 'offbyte scan && offbyte sync'
+            fixCommand: 'offbyt scan && offbyt sync'
           },
           {
             title: 'Deployment Fails',
-            problem: 'Running offbyte deploy fails during the deployment process to cloud platforms.',
+            problem: 'Running offbyt deploy fails during the deployment process to cloud platforms.',
             cause: 'Deployment providers (Vercel, Railway, Netlify, etc.) require CLI authentication. Your credentials may have expired or are not configured.',
-            solution: 'Authenticate with your deployment provider\'s CLI before running Offbyte deployment. This establishes the required credentials and permissions.',
-            fixCommand: 'vercel login (or railway login, netlify login) && offbyte deploy --full'
+            solution: 'Authenticate with your deployment provider\'s CLI before running offbyt deployment. This establishes the required credentials and permissions.',
+            fixCommand: 'vercel login (or railway login, netlify login) && offbyt deploy --full'
           },
           {
             title: 'Port Already In Use',
@@ -948,7 +948,7 @@ export const DOCS_CONTENT: DocSection[] = [
       <div className="space-y-8">
         <section className="space-y-4">
           <p className="text-zinc-400">
-            The <code className="text-zinc-300">offbyte.config.js</code> file allows you to fine-tune how your backend is generated.
+            The <code className="text-zinc-300">offbyt.config.js</code> file allows you to fine-tune how your backend is generated.
           </p>
           <pre className="bg-zinc-950 p-4 rounded-xl border border-zinc-800 font-mono text-xs text-zinc-300">
             {`module.exports = {
@@ -991,10 +991,10 @@ export const DOCS_CONTENT: DocSection[] = [
         <section className="space-y-4">
           <h3 className="text-xl font-bold text-white">Environment Variables</h3>
           <p className="text-sm text-zinc-500">
-            Offbyte respects standard environment variables for sensitive data.
+            offbyt respects standard environment variables for sensitive data.
           </p>
           <ul className="text-xs text-zinc-500 space-y-2 list-disc list-inside ml-2">
-            <li><code className="text-zinc-300">OFFBYTE_AI_KEY</code>: API key for AI-assisted mode.</li>
+            <li><code className="text-zinc-300">offbyt_AI_KEY</code>: API key for AI-assisted mode.</li>
             <li><code className="text-zinc-300">DATABASE_URL</code>: Connection string for your database.</li>
             <li><code className="text-zinc-300">JWT_SECRET</code>: Secret key for signing tokens.</li>
           </ul>
@@ -1040,7 +1040,7 @@ fetch('/api/tasks', { method: 'POST', body: JSON.stringify(newTask) });`}</pre>
           <h3 className="text-2xl font-bold text-white">Ecommerce App</h3>
           <p className="text-zinc-400">A full-featured store with products, cart, and orders.</p>
           <div className="p-6 rounded-2xl bg-zinc-900 border border-zinc-800 space-y-4">
-            <p className="text-sm text-zinc-500">Offbyte detects the <code className="text-zinc-300">Cart</code> context and generates session-based or database-backed cart logic automatically.</p>
+            <p className="text-sm text-zinc-500">offbyt detects the <code className="text-zinc-300">Cart</code> context and generates session-based or database-backed cart logic automatically.</p>
           </div>
         </section>
       </div>
@@ -1053,7 +1053,7 @@ fetch('/api/tasks', { method: 'POST', body: JSON.stringify(newTask) });`}</pre>
     content: (
       <div className="space-y-8">
         {[
-          { q: 'Is Offbyte free?', a: 'Yes, the core CLI and offline mode are completely free and open-source.' },
+          { q: 'Is offbyt free?', a: 'Yes, the core CLI and offline mode are completely free and open-source.' },
           { q: 'Which frameworks are supported?', a: 'Currently React, Vue, and Svelte are supported for frontend. Express, Fastify, and NestJS for backend.' },
           { q: 'Can I customize generated code?', a: 'Absolutely. The generated code is standard Node.js code that you own and can modify as needed.' },
           { q: 'Does it support databases?', a: 'Yes, it supports MongoDB, PostgreSQL, MySQL, and SQLite out of the box.' },

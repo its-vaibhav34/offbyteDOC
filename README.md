@@ -1,8 +1,8 @@
-# Offbyte 🚀
+# offbyt 🚀
 
 ### Frontend → Production Backend in Minutes
 
-**Offbyte** is a powerful CLI tool that automatically generates **production-ready backend infrastructure** by analyzing your frontend code.
+**offbyt** is a powerful CLI tool that automatically generates **production-ready backend infrastructure** by analyzing your frontend code.
 
 It detects resources, API patterns, and data usage inside your frontend project and generates a complete backend including APIs, database models, authentication, middleware, realtime features, and deployment configuration.
 
@@ -10,13 +10,13 @@ Stop writing repetitive backend boilerplate. Build faster and ship sooner.
 
 ---
 
-# ✨ Why Offbyte?
+# ✨ Why offbyt?
 
 Most modern applications start with **frontend-first development**. Developers build UI and state logic before implementing backend APIs.
 
-Offbyte bridges this gap by automatically converting frontend patterns into a fully functional backend.
+offbyt bridges this gap by automatically converting frontend patterns into a fully functional backend.
 
-### With Offbyte you get
+### With offbyt you get
 
 * ⚡ Automatic Backend Generation
 * 🧠 Smart Resource Detection
@@ -29,14 +29,14 @@ Offbyte bridges this gap by automatically converting frontend patterns into a fu
 
 ---
 
-# 🧠 How Offbyte Works
+# 🧠 How offbyt Works
 
-Offbyte analyzes your frontend project and builds backend infrastructure automatically.
+offbyt analyzes your frontend project and builds backend infrastructure automatically.
 
 ```
 Frontend Code
       ↓
-Offbyte CLI
+offbyt CLI
       ↓
 Resource Detection
       ↓
@@ -53,7 +53,7 @@ Frontend code:
 const [products, setProducts] = useState([])
 ```
 
-Offbyte detects:
+offbyt detects:
 
 ```
 Resource → products
@@ -73,16 +73,16 @@ DELETE /api/products/:id
 
 # ⚡ Installation
 
-Install Offbyte globally using npm:
+Install offbyt globally using npm:
 
 ```bash
-npm install -g offbyte
+npm install -g offbyt
 ```
 
 Verify installation:
 
 ```bash
-offbyte --version
+offbyt --version
 ```
 
 ---
@@ -93,7 +93,7 @@ Generate a backend in **two commands**.
 
 ```bash
 # Generate backend
-offbyte generate
+offbyt generate
 
 # Start backend
 cd backend
@@ -110,7 +110,7 @@ http://localhost:5000
 
 # 📦 Generated Backend Structure
 
-Offbyte creates a complete backend architecture.
+offbyt creates a complete backend architecture.
 
 ```
 backend/
@@ -140,20 +140,20 @@ Everything is production-ready and customizable.
 
 # 🔧 CLI Commands
 
-## Initialize Offbyte
+## Initialize offbyt
 
 ```bash
-offbyte init
+offbyt init
 ```
 
-Creates Offbyte configuration inside your project.
+Creates offbyt configuration inside your project.
 
 ---
 
 ## Generate Backend
 
 ```bash
-offbyte generate
+offbyt generate
 ```
 
 Scans your frontend and generates a complete backend.
@@ -170,12 +170,12 @@ Options:
 ## Connect Frontend & Backend
 
 ```bash
-offbyte connect
+offbyt connect
 ```
 
 Automatically connects frontend API calls with backend endpoints.
 
-Offbyte will:
+offbyt will:
 
 * fix API URLs
 * update environment variables
@@ -186,12 +186,12 @@ Offbyte will:
 ## Sync Backend
 
 ```bash
-offbyte sync
+offbyt sync
 ```
 
 Keeps backend updated with frontend changes.
 
-Offbyte will:
+offbyt will:
 
 * detect new resources
 * add missing routes
@@ -203,7 +203,7 @@ Offbyte will:
 ## Benchmark Backend
 
 ```bash
-offbyte benchmark
+offbyt benchmark
 ```
 
 Runs scalability tests on your backend.
@@ -211,7 +211,7 @@ Runs scalability tests on your backend.
 Example:
 
 ```bash
-offbyte benchmark --levels 10,100,1000,10000
+offbyt benchmark --levels 10,100,1000,10000
 ```
 
 You will get:
@@ -228,7 +228,7 @@ You will get:
 Deploy full stack applications using one command.
 
 ```bash
-offbyte deploy --full
+offbyt deploy --full
 ```
 
 Supported platforms:
@@ -245,7 +245,7 @@ Backend:
 * Render
 * Cloudflare Workers
 
-Offbyte automatically:
+offbyt automatically:
 
 * installs CLI tools
 * logs into providers
@@ -259,10 +259,10 @@ Offbyte automatically:
 When building frontend first without API calls:
 
 ```bash
-offbyte generate-api
+offbyt generate-api
 ```
 
-Offbyte detects resources from frontend state patterns.
+offbyt detects resources from frontend state patterns.
 
 Example detection:
 
@@ -285,7 +285,7 @@ src/api/product.js
 Check system readiness.
 
 ```bash
-offbyte doctor
+offbyt doctor
 ```
 
 Checks:
@@ -299,7 +299,7 @@ Checks:
 
 # 💬 Realtime Backend (Socket.io)
 
-Offbyte automatically generates realtime backend features.
+offbyt automatically generates realtime backend features.
 
 Supported realtime features:
 
@@ -352,7 +352,7 @@ GET /api/products?sort=-price,name
 
 # 🔐 Security Features
 
-Offbyte includes built-in security middleware.
+offbyt includes built-in security middleware.
 
 * Rate limiting
 * Input validation
@@ -416,6 +416,6 @@ MIT License
 
 # ❤️ Built for Developers
 
-Offbyte is designed to remove repetitive backend work so developers can focus on building products instead of infrastructure.
+offbyt is designed to remove repetitive backend work so developers can focus on building products instead of infrastructure.
 
-If you find Offbyte useful, consider giving the project a ⭐ on GitHub.
+If you find offbyt useful, consider giving the project a ⭐ on GitHub.
